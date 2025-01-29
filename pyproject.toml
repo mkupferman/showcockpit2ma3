@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "showcockpit2ma3"
-version = "0.0.1"
+version = "0.0.2"
 authors = [{ name = "Matt Kupferman", email = "matt@kupferman.net" }]
 maintainers = [{ name = "Matt Kupferman", email = "matt@kupferman.net" }]
 description = "Proxies OSC messages between ShowCockpit and GrandMA3 to correct protocol issues in GrandMA3 2.2"

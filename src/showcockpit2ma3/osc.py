@@ -56,7 +56,8 @@ class OSCProxy:
         if self.verbose:
             print(f"[SC ->] {address} {args}")
 
-        address = address.replace(self.sc_datapool_base, self.ma_datapool_base)
+        if address.startswith(self.sc_datapool_base):
+            address = address.replace(self.sc_datapool_base, self.ma_datapool_base)
 
         largs = list(cast(List[Any], args))
         if largs[0] == "Swop":
@@ -72,11 +73,14 @@ class OSCProxy:
         if self.verbose:
             print(f"[MA ->] {address} {args}")
 
-        address = address.replace(self.ma_datapool_base, self.sc_datapool_base)
+        if address.startswith(self.ma_datapool_base):
+            address = address.replace(self.ma_datapool_base, self.sc_datapool_base)
 
         largs = list(cast(List[Any], args))
         if largs[0] == "Swap":
             largs[0] = "Swop"
+        elif largs[0].startswith("Fader") and len(largs) == 3:
+            largs.append("null")
 
         self.scOutputQueue.put((address, tuple(largs)))
 

@@ -16,6 +16,9 @@ At the time of writing, I know of two protocol inconsistencies between ShowCockp
 
 2. For _swop_ functionality on a sequence button, the GrandMA3 OSC protocol expects `Swap` instead of `Swop`.
 
+3. Between GrandMA3 2.0.2.0 and 2.1.1.2, it stopped sending a 4th OSC argument for Fader feedback messages,
+   and ShowCockpit expects 4 arguments. This proxy will add a dummy 4th argument to these messages.
+
 ## Requirements
 
 * Computer running [ShowCockpit](https://showcockpit.com/) 4.11.2.
