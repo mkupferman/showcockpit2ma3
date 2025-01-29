@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "showcockpit2ma3"
+version = "0.0.1"
+authors = [{ name = "Matt Kupferman", email = "matt@kupferman.net" }]
+maintainers = [{ name = "Matt Kupferman", email = "matt@kupferman.net" }]
+description = "Proxies OSC messages between ShowCockpit and GrandMA3 to correct protocol issues in GrandMA3 2.2"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE.txt" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: End Users/Desktop",
+    "Development Status :: 4 - Beta",
+]
+dependencies = ["python-osc", "Click"]
+
+[tool.setuptools.package-data]
+"showcockpit2ma3" = ["py.typed"]
+
+[project.urls]
+Homepage = "https://github.com/mkupferman/showcockpit2ma3"
+
+[project.scripts]
+showcockpit2ma3 = "showcockpit2ma3:startServer"
+
+[project.optional-dependencies]
+dev = ["black"]
+validate = ["mypy"]
