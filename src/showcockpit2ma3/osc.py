@@ -81,6 +81,10 @@ class OSCProxy:
             largs[0] = "Swop"
         elif largs[0].startswith("Fader") and len(largs) == 3:
             largs.append("null")
+        elif largs[0] == "Off" and len(largs) >= 2:
+            largs[0] = "Go+"
+            largs[1] = 0
+            largs.append("null")
 
         self.scOutputQueue.put((address, tuple(largs)))
 

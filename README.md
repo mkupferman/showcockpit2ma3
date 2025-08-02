@@ -8,7 +8,7 @@ Once one or both of the two vendors makes updates, this tool hopefully will not 
 
 ## What does it alter?
 
-At the time of writing, I know of two protocol inconsistencies between ShowCockpit 4.11.2 and GrandMA3 2.2.1:
+At the time of writing, I know of several protocol inconsistencies between ShowCockpit 4.11.2 and GrandMA3 2.2.1+:
 
 1. Between GrandMA3 2.1.1 and 2.2.1, the numerical indexing of the MA3 directory structure changed.
    `ShowData` and `DataPools` both changed from ID `13` to `14`, making sequence-based OSC messages
@@ -19,10 +19,15 @@ At the time of writing, I know of two protocol inconsistencies between ShowCockp
 3. Between GrandMA3 2.0.2.0 and 2.1.1.2, it stopped sending a 4th OSC argument for Fader feedback messages,
    and ShowCockpit expects 4 arguments. This proxy will add a dummy 4th argument to these messages.
 
+4. When GrandMA3 sends sequence off messages with format `/14.14.1.6.X 'Off' 1`, ShowCockpit expects
+   a different format: `/13.13.1.6.X 'Go+' 0 '<any arg>'`. This proxy translates the first argument from
+   `Off` to `Go+`, changes the second argument from `1` to `0`, and adds a dummy third argument.
+
 ## Requirements
 
 * Computer running [ShowCockpit](https://showcockpit.com/) 4.11.2.
-* Console or onPC running [GrandMA3](https://www.malighting.com/grandma3/) 2.2.1.
+* Console or onPC running [GrandMA3](https://www.malighting.com/grandma3/) at least 2.2.1
+  (also confirmed on 2.2.5 and 2.3.0).
 * Computer to run the proxy on, with Python 3.11 or later. In most cases, this
   can be on the same computer as ShowCockpit.
 * UDP network connectivity between all devices.
