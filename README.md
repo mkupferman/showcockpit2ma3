@@ -48,12 +48,12 @@ At the time of writing, I know of two protocol inconsistencies between ShowCockp
 
     ```shell
     showcockpit2ma3 \
-      --ma-listen-ip 192.168.1.200 \  # proxy listens for MA's OSC on this IP
-      --ma-output-port 8001 \         # ... and this port
+      --ma-listen-ip 192.168.1.200 \  # proxy listens for MA's OSC on this local IP
+      --ma-output-port 8001 \         # ... and binds to this local port
       --ma-ip 192.168.1.100 \         # proxy sends OSC to MA on this IP
       --ma-input-port 8000 \          # ... and this port
-      --sc-listen-ip 127.0.0.1 \      # proxy listens for SC's OSC on this IP
-      --sc-output-port 8100 \         # ... and this port
+      --sc-listen-ip 127.0.0.1 \      # proxy listens for SC's OSC on this local IP
+      --sc-output-port 8100 \         # ... and binds to this local port
       --sc-ip 127.0.0.1 \             # proxy sends OSC to SC on this IP
       --sc-input-port 8101 \          # ... and this port
     ```
